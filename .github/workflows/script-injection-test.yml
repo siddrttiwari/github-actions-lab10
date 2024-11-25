@@ -8,9 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
+        
+      - name: set title as environment variable
+        run: |
+          echo "ISSUE_TITTLE=${{ github.event.issue.title }}" >> GITHUB_ENV 
 
       - run: |
-          issue_title="${{ github.event.issue.title }}"
+          issue_title="$ISSUE_TITLE"
           if [[ "$issue_title" == *"bug"* ]]; then
             echo "Issue is about a bug!"
           else
