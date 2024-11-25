@@ -9,10 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
         env:
-          ISSUE_TITLE: ${{ github.event.issue.title }}
+          issue_tittle: "${{ github.event.issue.title }}"
 
       - run: |
-          issue_tittle="$ISSUE_TITLE"
           if [[ "$issue_tittle" == *"bug"* ]]; then
             echo "Issue is about a bug!"
           else
